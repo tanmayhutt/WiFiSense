@@ -309,12 +309,30 @@ Give it **2-3 minutes** of operation before expecting accurate detection. This l
 
 ## How to Use
 
+### Initial Calibration ⚠️ **IMPORTANT**
+The device requires **2-3 minutes of calibration time in an empty room** before it can accurately detect motion:
+
+1. **Power on the ESP8266** in the room where you want to use it
+2. **Leave the room empty** - no people moving around
+3. **Wait 2-3 minutes** for the firmware to learn the baseline WiFi signal level
+4. During this time, you'll see:
+   - Serial output showing baseline adaptation
+   - Variance should remain low (<1.0 dBm)
+   - The system is measuring "normal" conditions
+5. **After calibration**, accuracy will jump to 85-92%
+
+**Why calibration is needed:**
+- Each room has different WiFi signal characteristics (walls, furniture, distance to router)
+- The adaptive baseline algorithm needs reference data from your specific environment
+- Without calibration, the system cannot distinguish between room noise and human movement
+
 ### Basic Operation
 1. Power on the ESP8266
 2. Wait for WiFi connection (LED blinks, then stabilizes)
-3. Open Serial Monitor or Serial Plotter
-4. The LED will light up when motion is detected
-5. Serial output shows confidence scores and motion intensity
+3. **Keep the room empty for the first 2-3 minutes** (calibration phase)
+4. Open Serial Monitor or Serial Plotter
+5. The LED will light up when motion is detected
+6. Serial output shows confidence scores and motion intensity
 
 ### Monitoring Performance
 Watch the Serial Plotter:
