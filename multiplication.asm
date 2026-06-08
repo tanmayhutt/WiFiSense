@@ -1,9 +1,9 @@
-ORG 0000H         ; Reset vector address
-SJMP 30H          ; Short jump to main program
+ORG 0000H
+SJMP 0030H
 
-ORG 30H           ; Main program starts at 0030H
-MOV A, #03H       ; Load immediate value 3 into Accumulator
-MOV B, #02H       ; Load immediate value 2 into Register B
-MUL AB            ; Multiply A and B (A * B) -> 3 * 2
+ORG 0030H
+MOV A, #03H       ; First number MUST be in A
+MOV B, #02H       ; Second number MUST be in B
+MUL AB            ; Multiply A and B (Result: A = 06H, B = 00H)
 
-END               ; End of assembly code
+END
