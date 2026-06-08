@@ -1,10 +1,10 @@
-ORG 0000H         ; Reset vector address
-SJMP 30H          ; Short jump to main program
+ORG 0000H
+SJMP 0030H
 
-ORG 30H           ; Main program starts at 0030H
-MOV R1, #02H      ; Load immediate value 2 into Register 1
-MOV A, #05H       ; Load immediate value 5 into the Accumulator
-CLR C             ; Clear the carry flag to prevent unintended borrow subtraction
-SUBB A, R1        ; Subtract R1 from A (A = A - R1 - C) -> A = 5 - 2 - 0
+ORG 0030H
+MOV R1, #02H      ; Load 2 into Register 1
+MOV A, #05H       ; Load 5 into Accumulator
+CLR C             ; CRITICAL: Clear carry so it doesn't subtract an extra 1
+SUBB A, R1        ; A = A - R1 (Result: A = 03H)
 
-END               ; End of assembly code
+END
