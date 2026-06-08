@@ -1,9 +1,9 @@
-ORG 0000H         ; Reset vector address
-SJMP 30H          ; Short jump to main program
+ORG 0000H
+SJMP 0030H
 
-ORG 30H           ; Main program starts at 0030H
-MOV A, #02H       ; Load numerator (2) into Accumulator
-MOV B, #02H       ; Load denominator (2) into Register B
-DIV AB            ; Divide A by B (A / B) -> 2 / 2
+ORG 0030H
+MOV A, #02H       ; Numerator MUST be in A
+MOV B, #02H       ; Denominator MUST be in B
+DIV AB            ; Divide A by B (Result: A = 01H (Quotient), B = 00H (Remainder))
 
-END               ; End of assembly code
+END
